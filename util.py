@@ -216,18 +216,13 @@ def get_interval(Xtj, a, b, model):
 
         if (ptr < len(layers) and layers[ptr] == 'ReLU'):
             ptr += 1
-            Relu_matrix = np.zeros((temp.shape[0], temp.shape[0]))
             sub_itv = [np.NINF, np.inf]
             for i in range(temp.shape[0]):
                 if temp[i] > 0:
-                    Relu_matrix[i][i] = 1
                     sub_itv = intersect(sub_itv, solve_linear_inequality(-u[i][0], -v[i][0]))
                 else:
                     sub_itv = intersect(sub_itv, solve_linear_inequality(u[i][0], v[i][0]))
             itv = intersect(itv, sub_itv)
-            temp = Relu_matrix.dot(temp)
-            u = Relu_matrix.dot(u)
-            v = Relu_matrix.dot(v)
 
     return itv, u, v
 
