@@ -3,9 +3,6 @@ from mpmath import mp
 
 mp.dps = 500
 
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
-
 def intersect(itv1, itv2):
     itv = [max(itv1[0], itv2[0]), min(itv1[1], itv2[1])]
     if itv[0] > itv[1]:

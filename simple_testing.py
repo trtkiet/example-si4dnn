@@ -4,10 +4,6 @@ import gen_data
 import torch
 
 
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
-
-
 d = 8
 hidden_dims = [2, 2]
 model = SimpleModel(input_dim=d, hidden_dims=hidden_dims)
